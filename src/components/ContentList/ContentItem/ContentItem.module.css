@@ -1,0 +1,24 @@
+.content {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px colid #ccc;
+}
+
+.content h3 {
+  margin: 0 0 0.25rem 0;
+}
+
+.poster {
+  width: 70%;
+}
+
+.source {
+  justify-content: right;
+  align-content: flex-end;
+}
+
+.releaseInformation {
+  font-style: italic;
+}
