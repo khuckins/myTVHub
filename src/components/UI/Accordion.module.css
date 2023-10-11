@@ -1,0 +1,50 @@
+.AccordionTable {
+  background-color: rgb(77, 21, 129);
+  align-content: left;
+  justify-content: left;
+  text-align: left;
+  width: 100%;
+  border-collapse:collapse;
+}
+.AccordionSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.TableHeader {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(77, 21, 129);
+  width: 100%;
+}
+
+.AccordionTable td {
+  padding: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+.AccordionTable tr:nth-child(even) {
+  background-color: rgb(47, 9, 82);
+}
+
+.AccordionTable tr:nth-child(odd) {
+  background-color: rgb(69, 11, 122);
+}
+
+.AccordionTable tr:hover {
+  background-color: rgb(98, 40, 151);
+}
+
+.accordion-title {
+  display: flex;
+  padding: 1rem;
+  margin-top: 1rem;
+}

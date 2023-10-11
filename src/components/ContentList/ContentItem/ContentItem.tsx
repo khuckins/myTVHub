@@ -1,5 +1,6 @@
+import Poster from "../../UI/Poster";
 import classes from "./ContentItem.module.css";
-
+import plexIcon from "../../../assets/icons/plex.png"
 export interface IContentItemProps {
   guid?: string;
   title?: string;
@@ -14,28 +15,21 @@ export interface IContentItemProps {
   source?: string;
 }
 
+// TODO: Map Source and Icon
 
 const ContentItem = (props: IContentItemProps) => {
-  const releaseInformation = [props.studio,  props.year].filter(Boolean).join(" | ")
 
   return (
     <li className={classes.content}>
       
-      <div className={classes.posterSection}>
-        <img
-          src={props.thumb}
-          className={classes.poster}
-          alt={`Poster for ${props.title}`}
-        />
-      </div>
+      <Poster poster={props.art} altText={`Poster for ${props.title}`} className={classes.posterSection} />
 
-      <div>
+      <div className={classes.mainInfo}>
         <h3>{props.title}</h3>
         {props.summary && <div className={classes.summary}>{props.summary}</div>}
-        <div className={classes.releaseInformation}>
-          {releaseInformation}
+        <div className={classes.watchableOn}>
+          <div className={classes.source}>Watchable on {props.source}</div>
         </div>
-        <div className={classes.source}>Watchable on {props.source}</div>
       </div>
     </li>
   );

@@ -5,7 +5,7 @@ const ContentSummary = () => {
     <section className={classes.summary}>
       <h2>All your shows, listed in one place.</h2>
       <p>
-        Below you'll see a list of all shows listed on your Plex Servers, and those favorited in supported Streaming Services.
+        Below you'll see a list of all shows available on your local Plex Server, and those watch-listed in supported Streaming Services.
       </p>
     </section>
   )

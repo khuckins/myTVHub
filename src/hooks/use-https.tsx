@@ -8,7 +8,6 @@ const useHttp = () => {
   const sendRequest = useCallback(async (request: any, applyDataFn: any) => {
     setIsLoading(true);
     setError(null)
-    console.log(request)
 
     try {
       const [newShows] = await Promise.all([
@@ -18,7 +17,7 @@ const useHttp = () => {
       if (!newShows) {
         throw new Error('Request failed!');
       }
-
+      console.log(newShows.data.MediaContainer.Metadata);
       applyDataFn(newShows.data.MediaContainer.Metadata);
     } catch (err: any) {
       setError(err.message || "Something went wrong!");

@@ -3,6 +3,8 @@ import Card from "../UI/Card";
 import classes from "./AvailableContent.module.css";
 import ContentItem from "./ContentItem/ContentItem";
 import useHttp from "../../hooks/use-https";
+import Accordion from "../UI/Accordion";
+import AccordionItem from "../UI/AccordionItem";
 const DUMMY_CONTENT = [
   {
     guid: "7747e5ff-6c24-4092-913d-7232ca189bfd",
@@ -53,7 +55,6 @@ const AvailableContent = () => {
   useEffect(() => {
     const transformContent = (contentObj: any) => {
       const loadedContent = [];
-      console.log(contentObj)
 
       for (const contentKey in contentObj) {
         loadedContent.push({
@@ -81,8 +82,16 @@ const AvailableContent = () => {
   }, [fetchContent]);  
 
   let content: any = shows.map((content: any) => {
+    let ignoredItems = [
+      "guid", "title", "summary", "art", "thumb", "source"
+    ]
+    let contentInfo = Object.keys(content).map((item: string) => {
+      if(!ignoredItems.includes(item) && content[item] !== undefined)
+      return <AccordionItem label={item} val={content[item]} />
+    })
+
     return (
-      <Card key={content.guid}>
+      <Card key={content.guid} accordionChildren={contentInfo}>
         <ul>
           <ContentItem
             guid={content.guid}
@@ -92,7 +101,7 @@ const AvailableContent = () => {
             type={content.type}
             studio={content.studio}
             year={content.year}
-            art={`${content.thumb}?X-Plex-Token=GwzMnQNsqd_QaBt2udgh`}
+            art={`http://${process.env.REACT_APP_PLEX_IP_ADDRESS}:${process.env.REACT_APP_PLEX_PORT_NUMBER}${content.thumb}?X-Plex-Token=${process.env.REACT_APP_PLEX_API_TOKEN}`}
             rating={content.rating}
             audienceRating={content.audienceRating}
           />
